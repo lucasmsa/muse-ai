@@ -11,6 +11,7 @@ module.exports = {
       'gray-250': '#262626',
       'gray-300': '#1d1d1d',
       'alice-blue': '#00DAE8',
+      transparent: 'rgba(0, 0, 0, 0)',
     },
     extend: {
       fontFamily: {

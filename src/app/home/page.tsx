@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Card } from '@/components/Card'
 import { Navbar } from '@/components/Navbar'
 import { SongsToolbar } from '@/components/SongsToolbar'
@@ -9,6 +10,8 @@ export default function HomePage() {
   const { count, incrementCount, decrementCount } = useCounterStore(
     (state) => state,
   )
+
+  const [isFavorited, setIsFavorited] = useState(false)
 
   return (
     <main className="w-full h-full flex flex-col">
@@ -21,7 +24,10 @@ export default function HomePage() {
             artist="Great artist"
             albumTitle="Album title"
             coverArt="/assets/images/amy-poster.jpeg"
-            isFavorited
+            favorite={{
+              isFavorited,
+              onClick: () => setIsFavorited(!isFavorited),
+            }}
           />
         </div>
       </section>

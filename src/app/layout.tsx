@@ -1,6 +1,4 @@
-import Head from 'next/head'
 import '../styles/globals.css'
-import { Fragment } from 'react'
 import type { Metadata } from 'next'
 import { Nokora } from 'next/font/google'
 import { CounterStoreProvider } from '@/providers/counter-store-provider'

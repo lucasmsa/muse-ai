@@ -8,6 +8,8 @@
     "dev:client:server": "npx concurrently \"node server.js\" \"npm run dev\""
   },
   "dependencies": {
+    "@radix-ui/react-switch": "^1.1.0",
+    "cmdk": "^1.0.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
