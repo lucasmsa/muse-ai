@@ -1,14 +1,34 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Head from 'next/head'
+import styles from '../../styles/Home.module.css'
+import { useCounterStore } from '../../providers/counter-store-provider'
 
 export default function Home() {
+  const { count, incrementCount, decrementCount } = useCounterStore(
+    (state) => state,
+  )
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <>
+        <div>
+          Count: {count}
+          <hr />
+          <button
+            className="bg-teal-600"
+            type="button"
+            onClick={() => void incrementCount()}
+          >
+            Increment Count
+          </button>
+          <button type="button" onClick={() => void decrementCount()}>
+            Decrement Count
+          </button>
+        </div>
+      </>
       <main>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -92,8 +112,15 @@ export default function Home() {
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+          font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono,
+            Courier New,
+            monospace;
         }
       `}</style>
 
@@ -102,8 +129,17 @@ export default function Home() {
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+          font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            Segoe UI,
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            Fira Sans,
+            Droid Sans,
+            Helvetica Neue,
             sans-serif;
         }
         * {

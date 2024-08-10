@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    command: node server.js
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3333:3333'
