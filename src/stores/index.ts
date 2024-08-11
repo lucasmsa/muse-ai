@@ -20,24 +20,23 @@ interface Song {
   related: string[]
 }
 
-interface FavoritedSongs {
-  [key: number]: boolean
-}
-
-interface InitialState {
+export interface InitialState {
   songs: Song[]
   isLoading: boolean
   isError: null | AxiosError
-  favoritedSongs: Set<number>
+  showOnlyFavorites: boolean
+  favoritedSongsIds: Set<number>
   loadSongs: () => Promise<void>
   favoriteSong: (id: number) => void
+  toggleShowOnlyFavorites: () => void
 }
 
 const initialState = {
   songs: [],
   isError: null,
   isLoading: false,
-  favoritedSongs: new Set<number>(),
+  showOnlyFavorites: false,
+  favoritedSongsIds: new Set<number>(),
 }
 
 export const useSongsStore = create<InitialState>((set) => ({
@@ -65,17 +64,22 @@ export const useSongsStore = create<InitialState>((set) => ({
   },
   favoriteSong: (id) => {
     set((state) => {
-      const newFavoritedSongs = state.favoritedSongs
+      const newfavoritedSongsIds = state.favoritedSongsIds
 
-      if (newFavoritedSongs.has(id)) {
-        newFavoritedSongs.delete(id)
+      if (newfavoritedSongsIds.has(id)) {
+        newfavoritedSongsIds.delete(id)
       } else {
-        newFavoritedSongs.add(id)
+        newfavoritedSongsIds.add(id)
       }
 
       return {
-        favoritedSongs: newFavoritedSongs,
+        favoritedSongsIds: newfavoritedSongsIds,
       }
     })
+  },
+  toggleShowOnlyFavorites: () => {
+    set((state) => ({
+      showOnlyFavorites: !state.showOnlyFavorites,
+    }))
   },
 }))

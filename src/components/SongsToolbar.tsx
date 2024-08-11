@@ -2,11 +2,15 @@ import { useState } from 'react'
 import { FavoritesButton } from './FavoritesButton'
 import { Toggle } from './Toggle'
 import { Search } from './Search'
+import { useToolbarSelector } from '@/stores/selectors'
+import { useSongsStore } from '@/stores'
 
 export const SongsToolbar = () => {
   const [checked, setChecked] = useState(false)
   const [favorite, setFavorite] = useState(false)
   const [search, setSearch] = useState('')
+  const { toggleShowOnlyFavorites, showOnlyFavorites } =
+    useSongsStore(useToolbarSelector)
 
   return (
     <section className="w-full flex flex-row justify-between">
@@ -16,8 +20,8 @@ export const SongsToolbar = () => {
             Your Library
           </h2>
           <FavoritesButton
-            isFavorited={favorite}
-            onClick={() => setFavorite(!favorite)}
+            isFavorited={showOnlyFavorites}
+            onClick={toggleShowOnlyFavorites}
           />
         </div>
         <p className="text-gray-50">You have {10} songs in your library</p>
