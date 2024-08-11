@@ -12,7 +12,9 @@ export const SongsToolbar = () => {
     <section className="w-full flex flex-row justify-between">
       <div className="flex flex-col">
         <div className="flex flex-row items-center gap-2 mb-3">
-          <h2 className="text-[32px] text-white font-semibold">Your Library</h2>
+          <h2 className="text-[32px] text-white font-semibold leading-9 ">
+            Your Library
+          </h2>
           <FavoritesButton
             isFavorited={favorite}
             onClick={() => setFavorite(!favorite)}

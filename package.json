@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@radix-ui/react-switch": "^1.1.0",
+    "axios": "^1.7.3",
     "cmdk": "^1.0.0",
     "next": "latest",
     "react": "18.2.0",

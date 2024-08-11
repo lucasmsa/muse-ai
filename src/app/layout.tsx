@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Nokora } from 'next/font/google'
-import { CounterStoreProvider } from '@/providers/counter-store-provider'
+// import { CounterStoreProvider } from '@/providers/counter-store-provider'
 
 export const metadata: Metadata = {
   title: 'MUSIC.ai coding test',
@@ -22,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <CounterStoreProvider>
-          <div className={`h-screen ${nokora.variable}`}>{children}</div>
-        </CounterStoreProvider>
+        <div className={`min-h-screen ${nokora.variable}`}>{children}</div>
       </body>
     </html>
   )

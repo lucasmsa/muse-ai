@@ -48,8 +48,8 @@ export const Card = ({
           alt={`${albumTitle} cover art`}
         />
         <div className="p-4">
-          <h3 className="text-white font-semibold">{title}</h3>
-          <div className="flex w-full mt-3 justify-between ">
+          <h3 className="text-white font-semibold truncate">{title}</h3>
+          <div className="flex w-full mt-3 justify-between">
             <p className="text-xs text-gray-100 font-semibold">{artist}</p>
             {renderFavoriteButton()}
           </div>
