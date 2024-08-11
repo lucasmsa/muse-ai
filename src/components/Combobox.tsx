@@ -35,6 +35,7 @@ export default function Combobox({ size, onClick }: ComboboxProps) {
           aria-label="Search input container"
           placeholder="Search in your library"
           className="h-10 w-64 rounded-md bg-gray-300
+                    max-mobile:!max-w-60
                     pl-8 pr-4 text-base leading-6 text-white
                     data-[size=lg]:w-[364px] !border-none !outline-none focus-within:bg-gray-150
                     shadow-inner placeholder:text-[rgb(0 0 0 / 0.6)] transition-all duration-200"

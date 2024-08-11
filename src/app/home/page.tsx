@@ -62,6 +62,7 @@ export default function HomePage() {
                 style={{ position: 'relative' }}
               >
                 <Card
+                  id={id}
                   title={song.title}
                   artist={song.artist}
                   albumTitle={song.album.title}
@@ -80,11 +81,8 @@ export default function HomePage() {
   }
 
   return (
-    <main className="w-full h-full flex min-h-screen flex-col bg-black">
-      <Navbar />
-      <section className="pb-16 max-w-[1240px] flex-grow w-full h-full flex flex-col pt-12 mx-auto px-6">
-        <FadeAnimationWrapper>{renderContent()}</FadeAnimationWrapper>
-      </section>
-    </main>
+    <section className="pb-16 max-w-[1240px] flex-grow w-full h-full flex flex-col pt-12 mx-auto px-6">
+      <FadeAnimationWrapper>{renderContent()}</FadeAnimationWrapper>
+    </section>
   )
 }

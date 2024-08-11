@@ -1,3 +1,4 @@
+import { Navbar } from '@/components/Navbar'
 import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Nokora } from 'next/font/google'
@@ -22,7 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className={`min-h-screen ${nokora.variable}`}>{children}</div>
+        <div className={`min-h-screen ${nokora.variable}`}>
+          <main className="w-full h-full flex min-h-screen flex-col bg-black">
+            <Navbar />
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   )

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getFavoriteIconSource } from '@/utils/getFavoriteIconSource'
 
 interface CardProps {
+  id: number
   title: string
   artist: string
   coverArt: string
@@ -14,6 +15,7 @@ interface CardProps {
 }
 
 export const Card = ({
+  id,
   title,
   artist,
   favorite,
@@ -39,7 +41,7 @@ export const Card = ({
   }
 
   return (
-    <Link href={''}>
+    <Link href={`song/${id}`}>
       <div className="h-[282px] w-[204px] bg-gray-300 rounded cursor-pointer hover:brightness-110 transition-all duration-200">
         <Image
           width={204}
