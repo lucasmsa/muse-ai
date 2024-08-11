@@ -2,6 +2,7 @@ import { InitialState } from '.'
 
 export const useHomeSelector = ({
   songs,
+  search,
   isError,
   isLoading,
   loadSongs,
@@ -11,6 +12,7 @@ export const useHomeSelector = ({
   showAlphabeticallyOrdered,
 }: InitialState) => ({
   songs,
+  search,
   isError,
   loadSongs,
   isLoading,
@@ -34,4 +36,14 @@ export const useToolbarSelector = ({
     showAlphabeticallyOrdered,
     songsQuantity: songs.length,
   }
+}
+
+export const useComboboxSelector = ({
+  songs,
+  search,
+  setSearch,
+  favoritedSongsIds,
+  showOnlyFavorites,
+}: InitialState) => {
+  return { songs, search, setSearch, favoritedSongsIds, showOnlyFavorites }
 }

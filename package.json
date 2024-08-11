@@ -8,11 +8,13 @@
     "dev:client:server": "npx concurrently \"node server.js\" \"npm run dev\""
   },
   "dependencies": {
+    "@ariakit/react": "^0.4.8",
     "@radix-ui/react-switch": "^1.1.0",
     "@types/prop-types": "^15.7.12",
     "axios": "^1.7.3",
     "cmdk": "^1.0.0",
     "framer-motion": "^11.3.24",
+    "match-sorter": "^6.3.4",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",

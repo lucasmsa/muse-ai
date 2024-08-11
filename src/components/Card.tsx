@@ -40,7 +40,7 @@ export const Card = ({
 
   return (
     <Link href={''}>
-      <div className="h-[282px] w-[204px] bg-gray-250 rounded cursor-pointer hover:brightness-110 transition-all duration-200">
+      <div className="h-[282px] w-[204px] bg-gray-300 rounded cursor-pointer hover:brightness-110 transition-all duration-200">
         <Image
           width={204}
           height={204}

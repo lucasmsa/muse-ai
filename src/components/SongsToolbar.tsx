@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import { Toggle } from './Toggle'
-import { Search } from './Search'
+import Combobox from './Combobox'
 import { useSongsStore } from '@/stores'
 import { FavoritesButton } from './FavoritesButton'
 import { useToolbarSelector } from '@/stores/selectors'
 
 export const SongsToolbar = () => {
-  const [checked, setChecked] = useState(false)
-  const [favorite, setFavorite] = useState(false)
-  const [search, setSearch] = useState('')
   const {
     songsQuantity,
     showOnlyFavorites,
@@ -36,16 +32,12 @@ export const SongsToolbar = () => {
       </div>
       <div className="flex flex-row items-center">
         <p className="text-sm font-semibold text-white pr-3">Sort from A-Z</p>
-        <div className="flex gap-6">
+        <div className="flex gap-6 items-center">
           <Toggle
             checked={showAlphabeticallyOrdered}
             onCheckChange={toggleSortAlphabetically}
           />
-          <Search
-            size="md"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
+          <Combobox size="md" />
         </div>
       </div>
     </section>

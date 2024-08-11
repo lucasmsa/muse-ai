@@ -25,6 +25,7 @@ export interface Song {
 
 export interface InitialState {
   songs: Song[]
+  search: string
   isLoading: boolean
   isError: null | AxiosError
   showOnlyFavorites: boolean
@@ -32,6 +33,7 @@ export interface InitialState {
   loadSongs: () => Promise<void>
   showAlphabeticallyOrdered: boolean
   favoriteSong: (id: number) => void
+  setSearch: (search: string) => void
   toggleShowOnlyFavorites: () => void
   toggleSortAlphabetically: () => void
 }
@@ -39,11 +41,13 @@ export interface InitialState {
 const initialState: Omit<
   InitialState,
   | 'loadSongs'
+  | 'setSearch'
   | 'favoriteSong'
   | 'toggleShowOnlyFavorites'
   | 'toggleSortAlphabetically'
 > = {
   songs: [],
+  search: '',
   isError: null,
   isLoading: false,
   showOnlyFavorites: false,
@@ -103,6 +107,9 @@ export const useSongsStore = create<
           set((state) => ({
             showAlphabeticallyOrdered: !state.showAlphabeticallyOrdered,
           }))
+        },
+        setSearch: (search) => {
+          set({ search })
         },
       }),
       {

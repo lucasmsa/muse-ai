@@ -22,7 +22,7 @@ export const FavoritesButton = ({
       aria-label={'Favorite songs button'}
       className="w-32 h-9 text-[14px] font-semibold rounded-[100px]
       flex items-center gap-2 text-white hover:scale-[1.02] pt-0 pb-0
-      pl-6 pr-6 transition-all duration-200 data-[favorite=false]:bg-gray-250
+      pl-6 pr-6 transition-all duration-200 data-[favorite=false]:bg-gray-300
       data-[favorite=true]:bg-gray-150"
     >
       <Image

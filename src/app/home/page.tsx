@@ -4,17 +4,18 @@ import { Card } from '@/components/Card'
 import { useSongsStore } from '@/stores'
 import { Fragment, useEffect } from 'react'
 import { Navbar } from '@/components/Navbar'
-import { SongsToolbar } from '@/components/SongsToolbar'
-import { prependAssetsImagePath } from '@/utils/prependAssetsImagePath'
+import { AnimatePresence } from 'framer-motion'
 import { useHomeSelector } from '@/stores/selectors'
-import { AnimatePresence, motion } from 'framer-motion'
-import { filterSongs } from '@/stores/filterSongs'
+import { SongsToolbar } from '@/components/SongsToolbar'
+import { useFilteredSongs } from '@/hooks/useFilteredSongs'
 import { LoadingSpinner } from '@/components/LoadingSpinner'
+import { prependAssetsImagePath } from '@/utils/prependAssetsImagePath'
 import { FadeAnimationWrapper } from '@/components/FadeAnimationWrapper'
 
 export default function HomePage() {
   const {
     songs,
+    search,
     isError,
     isLoading,
     loadSongs,
@@ -24,18 +25,19 @@ export default function HomePage() {
     showAlphabeticallyOrdered,
   } = useSongsStore(useHomeSelector)
 
+  const { filteredSongs } = useFilteredSongs({
+    songs,
+    search,
+    favoritedSongsIds,
+    showOnlyFavorites,
+    showAlphabeticallyOrdered,
+  })
+
   useEffect(() => {
     loadSongs()
   }, [])
 
   const renderContent = () => {
-    const filteredSongs = filterSongs({
-      songs,
-      favoritedSongsIds,
-      showOnlyFavorites,
-      showAlphabeticallyOrdered,
-    })
-
     if (isLoading) {
       return <LoadingSpinner />
     }
