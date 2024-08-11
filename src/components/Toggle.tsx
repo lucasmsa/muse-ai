@@ -6,9 +6,10 @@ type SwitchProps = ComponentProps<typeof Switch.Root> & {
   onCheckChange: (checked: boolean) => void
 }
 
-export const Toggle = ({ checked, onCheckChange, ...props }: SwitchProps) => {
+export const Toggle = ({ checked, onCheckChange }: SwitchProps) => {
   return (
     <Switch.Root
+      onCheckedChange={onCheckChange}
       aria-label="Toggle switch to sort songs"
       className="shadow-blackA4 relative bg-gray-150 h-8 w-14 cursor-pointer rounded-full bg-violet-300
       shadow-[0_0_0_2px] shadow-zinc-300 outline-none drop-shadow-sm focus:shadow-[0_0_0_2px]

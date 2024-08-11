@@ -8,6 +8,9 @@ import { SongsToolbar } from '@/components/SongsToolbar'
 import { prependAssetsImagePath } from '@/utils/prependAssetsImagePath'
 import { useHomeSelector } from '@/stores/selectors'
 import { AnimatePresence, motion } from 'framer-motion'
+import { filterSongs } from '@/stores/filterSongs'
+import { LoadingSpinner } from '@/components/LoadingSpinner'
+import { FadeAnimationWrapper } from '@/components/FadeAnimationWrapper'
 
 export default function HomePage() {
   const {
@@ -18,6 +21,7 @@ export default function HomePage() {
     favoriteSong,
     favoritedSongsIds,
     showOnlyFavorites,
+    showAlphabeticallyOrdered,
   } = useSongsStore(useHomeSelector)
 
   useEffect(() => {
@@ -25,23 +29,21 @@ export default function HomePage() {
   }, [])
 
   const renderContent = () => {
-    const filteredSongs = showOnlyFavorites
-      ? songs.filter((song) => favoritedSongsIds.has(song.id))
-      : songs
-
-    if (songs.length === 0) {
-      return <h3 className="font-semibold text-lg">No songs found</h3>
-    }
+    const filteredSongs = filterSongs({
+      songs,
+      favoritedSongsIds,
+      showOnlyFavorites,
+      showAlphabeticallyOrdered,
+    })
 
     if (isLoading) {
-      // Use a spinner component here
-      return <div>Loading...</div>
+      return <LoadingSpinner />
     }
 
     if (isError) {
       return (
-        <h3 className="text-white font-semibold text-lg">
-          Error: {isError.message}
+        <h3 className="text-white font-semibold text-lg self-center">
+          Error: {isError?.message || 'Something went wrong'}
         </h3>
       )
     }
@@ -52,13 +54,9 @@ export default function HomePage() {
         <div className="mt-10 h-full flex flex-row gap-[42px] flex-wrap">
           <AnimatePresence>
             {filteredSongs?.map(({ id, song }) => (
-              <motion.div
+              <FadeAnimationWrapper
                 layout
                 key={id}
-                exit={{ opacity: 0 }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
                 style={{ position: 'relative' }}
               >
                 <Card
@@ -67,11 +65,11 @@ export default function HomePage() {
                   albumTitle={song.album.title}
                   coverArt={prependAssetsImagePath(song.files.coverArt)}
                   favorite={{
-                    isFavorited: favoritedSongsIds.has(id),
                     onClick: () => favoriteSong(id),
+                    isFavorited: favoritedSongsIds.has(id),
                   }}
                 />
-              </motion.div>
+              </FadeAnimationWrapper>
             ))}
           </AnimatePresence>
         </div>
@@ -83,7 +81,7 @@ export default function HomePage() {
     <main className="w-full h-full flex min-h-screen flex-col bg-black">
       <Navbar />
       <section className="pb-16 max-w-[1240px] flex-grow w-full h-full flex flex-col pt-12 mx-auto px-6">
-        {renderContent()}
+        <FadeAnimationWrapper>{renderContent()}</FadeAnimationWrapper>
       </section>
     </main>
   )

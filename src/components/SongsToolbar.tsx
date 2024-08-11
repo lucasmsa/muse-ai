@@ -1,16 +1,22 @@
 import { useState } from 'react'
-import { FavoritesButton } from './FavoritesButton'
 import { Toggle } from './Toggle'
 import { Search } from './Search'
-import { useToolbarSelector } from '@/stores/selectors'
 import { useSongsStore } from '@/stores'
+import { FavoritesButton } from './FavoritesButton'
+import { useToolbarSelector } from '@/stores/selectors'
 
 export const SongsToolbar = () => {
   const [checked, setChecked] = useState(false)
   const [favorite, setFavorite] = useState(false)
   const [search, setSearch] = useState('')
-  const { toggleShowOnlyFavorites, showOnlyFavorites } =
-    useSongsStore(useToolbarSelector)
+  const {
+    songsQuantity,
+    showOnlyFavorites,
+    toggleShowOnlyFavorites,
+    toggleSortAlphabetically,
+    showAlphabeticallyOrdered,
+  } = useSongsStore(useToolbarSelector)
+  const songsText = songsQuantity === 1 ? 'song' : 'songs'
 
   return (
     <section className="w-full flex flex-row justify-between">
@@ -24,14 +30,16 @@ export const SongsToolbar = () => {
             onClick={toggleShowOnlyFavorites}
           />
         </div>
-        <p className="text-gray-50">You have {10} songs in your library</p>
+        <p className="text-gray-50">
+          You have {songsQuantity} {songsText} in your library
+        </p>
       </div>
       <div className="flex flex-row items-center">
         <p className="text-sm font-semibold text-white pr-3">Sort from A-Z</p>
         <div className="flex gap-6">
           <Toggle
-            checked={checked}
-            onCheckChange={() => setChecked(!checked)}
+            checked={showAlphabeticallyOrdered}
+            onCheckChange={toggleSortAlphabetically}
           />
           <Search
             size="md"
