@@ -53,7 +53,7 @@ export default function HomePage() {
     return (
       <Fragment>
         <SongsToolbar />
-        <div className="mt-10 h-full flex flex-row gap-[42px] flex-wrap">
+        <div className="mt-10 h-full flex flex-row gap-[42px] flex-wrap max-mobile:justify-center">
           <AnimatePresence>
             {filteredSongs?.map(({ id, song }) => (
               <FadeAnimationWrapper

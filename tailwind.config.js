@@ -16,6 +16,10 @@ module.exports = {
       'alice-blue': '#00DAE8',
       transparent: 'rgba(0, 0, 0, 0)',
     },
+    screens: {
+      tablet: '850px',
+      mobile: '513px',
+    },
     extend: {
       fontFamily: {
         nokora: ['var(--font-nokora)'],
