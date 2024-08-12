@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
-import { Song } from '@/stores'
 import { matchSorter } from 'match-sorter'
 import { useDebounce } from './useDebounce'
+import { SongCollection } from '@/types'
 
 interface FilterSongsProps {
-  songs: Song[]
   search: string
+  songs: SongCollection[]
   showOnlyFavorites: boolean
   favoritedSongsIds: Set<number>
   showAlphabeticallyOrdered?: boolean
@@ -18,8 +18,8 @@ export const useFilteredSongs = ({
   showOnlyFavorites,
   showAlphabeticallyOrdered,
 }: FilterSongsProps): {
-  filteredSongs: Song[]
   debouncedSearch: string
+  filteredSongs: SongCollection[]
 } => {
   const debouncedSearch = useDebounce(search, 200)
 

@@ -13,9 +13,9 @@
           "coverArt": "beatles-cover.jpeg",
           "poster": "beatles-poster.png",
           "audio": "song-1.mp3"
-        }
-      },
-      "related": [77649302, 11428620, 9226019, 6072496]
+        },
+        "related": [77649302, 11428620, 9226019, 6072496]
+      }
     },
     {
       "id": 12047958,
@@ -30,9 +30,9 @@
           "coverArt": "imagine-dragons-cover.jpeg",
           "poster": "imagine-dragons-poster.png",
           "audio": "song-2.mp3"
-        }
-      },
-      "related": [6242641284, 13475611]
+        },
+        "related": [6242641284, 13475611]
+      }
     },
     {
       "id": 77649302,
@@ -47,9 +47,9 @@
           "coverArt": "blink-cover.jpeg",
           "poster": "blink-182-poster.png",
           "audio": "song-2.mp3"
-        }
-      },
-      "related": [10831664, 703, 12047958, 9226019]
+        },
+        "related": [10831664, 703, 12047958, 9226019]
+      }
     },
     {
       "id": 11428620,
@@ -64,9 +64,9 @@
           "coverArt": "ray-cover.jpeg",
           "poster": "ray-poster.png",
           "audio": "song-1.mp3"
-        }
-      },
-      "related": []
+        },
+        "related": []
+      }
     },
     {
       "id": 13475611,
@@ -81,9 +81,9 @@
           "coverArt": "ff-cover.jpeg",
           "poster": "ff-poster.png",
           "audio": "song-2.mp3"
-        }
-      },
-      "related": [848, 77649302]
+        },
+        "related": [848, 77649302]
+      }
     },
     {
       "id": 703,
@@ -98,7 +98,8 @@
           "coverArt": "imagine-dragons-cover.jpeg",
           "poster": "imagine-dragons-poster-2.png",
           "audio": "song-1.mp3"
-        }
+        },
+        "related": []
       }
     },
     {
@@ -114,9 +115,9 @@
           "coverArt": "led-cover.jpeg",
           "poster": "led-poster.png",
           "audio": "song-2.mp3"
-        }
-      },
-      "related": [13475611, 459, 9226019, 703]
+        },
+        "related": [13475611, 459, 9226019, 703]
+      }
     },
     {
       "id": 6242641284,
@@ -131,9 +132,9 @@
           "coverArt": "beatles-cover.jpeg",
           "poster": "beatles-poster.png",
           "audio": "song-1.mp3"
-        }
-      },
-      "related": [703, 10831664, 860, 848, 12047958]
+        },
+        "related": [703, 10831664, 860, 848, 12047958]
+      }
     },
     {
       "id": 459,
@@ -148,9 +149,9 @@
           "coverArt": "amy-cover.jpeg",
           "poster": "amy-poster.jpeg",
           "audio": "song-2.mp3"
-        }
-      },
-      "related": [77649302, 848, 6242641284, 6072496, 11428620]
+        },
+        "related": [77649302, 848, 6242641284, 6072496, 11428620]
+      }
     },
     {
       "id": 9226019,
@@ -165,9 +166,9 @@
           "coverArt": "steve-cover.jpeg",
           "poster": "steve-poster.png",
           "audio": "song-1.mp3"
-        }
-      },
-      "related": [12047958, 11428620, 459, 860]
+        },
+        "related": [12047958, 11428620, 459, 860]
+      }
     },
     {
       "id": 6072496,
@@ -182,9 +183,9 @@
           "coverArt": "ray-cover-2.jpeg",
           "poster": "ray-poster.png",
           "audio": "song-2.mp3"
-        }
-      },
-      "related": [848, 860, 13475611, 703, 9226019]
+        },
+        "related": [848, 860, 13475611, 703, 9226019]
+      }
     },
     {
       "id": 860,
@@ -199,9 +200,9 @@
           "coverArt": "pink-cover.jpeg",
           "poster": "pink-poster.png",
           "audio": "song-1.mp3"
-        }
-      },
-      "related": [6242641284, 6072496, 77649302]
+        },
+        "related": [6242641284, 6072496, 77649302]
+      }
     }
   ]
 }

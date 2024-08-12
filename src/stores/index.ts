@@ -1,52 +1,42 @@
 import { create } from 'zustand'
 import { AxiosError } from 'axios'
 import { api } from '@/service/api'
+import { Song, SongCollection } from '@/types'
 import { persist, devtools, StorageValue } from 'zustand/middleware'
 
 const FAVORITED_SONGS_STORAGE_KEY = 'favorited-songs-storage'
 
-export interface Song {
-  id: number
-  song: {
-    album: {
-      title: string
-      year: number
-    }
-    artist: string
-    title: string
-    files: {
-      coverArt: string
-      poster: string
-      audio: string
-    }
-  }
-  related: string[]
-}
-
 export interface InitialState {
-  songs: Song[]
   search: string
+  song: Song | null
   isLoading: boolean
+  songs: SongCollection[]
   isError: null | AxiosError
   showOnlyFavorites: boolean
   favoritedSongsIds: Set<number>
   loadSongs: () => Promise<void>
   showAlphabeticallyOrdered: boolean
-  favoriteSong: (id: number) => void
   setSearch: (search: string) => void
   toggleShowOnlyFavorites: () => void
   toggleSortAlphabetically: () => void
+  setFavoriteSong: (id: number) => void
+  loadSong: (id: string) => Promise<void>
+  getRelatedSongs: (songId: number | undefined) => SongCollection[]
 }
 
 const initialState: Omit<
   InitialState,
+  | 'setSong'
+  | 'loadSong'
   | 'loadSongs'
   | 'setSearch'
-  | 'favoriteSong'
+  | 'getRelatedSongs'
+  | 'setFavoriteSong'
   | 'toggleShowOnlyFavorites'
   | 'toggleSortAlphabetically'
 > = {
   songs: [],
+  song: null,
   search: '',
   isError: null,
   isLoading: false,
@@ -64,13 +54,17 @@ export const useSongsStore = create<
 >(
   devtools(
     persist(
-      (set) => ({
+      (set, get) => ({
         ...initialState,
         loadSongs: async () => {
           set({ isLoading: true })
 
           try {
             const response = await api.get('/songs')
+
+            console.log({
+              songs: response.data,
+            })
 
             set({
               songs: response.data.songs,
@@ -83,7 +77,31 @@ export const useSongsStore = create<
             set({ isLoading: false })
           }
         },
-        favoriteSong: (id) => {
+        loadSong: async (id: string) => {
+          set({ isLoading: true })
+
+          try {
+            const response = await api.get(`/song/${id}`)
+
+            if (!response.data.song) {
+              throw new Error('Song not found')
+            }
+
+            set({
+              song: {
+                ...response.data.song,
+                id: Number(id),
+              },
+            })
+          } catch (error) {
+            set({
+              isError: error as AxiosError,
+            })
+          } finally {
+            set({ isLoading: false })
+          }
+        },
+        setFavoriteSong: (id) => {
           set((state) => {
             const newfavoritedSongsIds = new Set(state.favoritedSongsIds)
 
@@ -110,6 +128,17 @@ export const useSongsStore = create<
         },
         setSearch: (search) => {
           set({ search })
+        },
+        getRelatedSongs: (songId) => {
+          if (!songId) return []
+
+          const { songs, song } = get()
+
+          if (!song) return []
+
+          const relatedSongs = new Set(song.related)
+
+          return songs?.filter((s) => relatedSongs?.has(s.id))
         },
       }),
       {

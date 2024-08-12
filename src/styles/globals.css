@@ -52,3 +52,68 @@ button {
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
+
+.rhap_container {
+  width: 400px !important;
+
+  @media screen and (max-width: 525px) {
+    width: 320px !important;
+  }
+}
+
+.custom-audio-player .rhap_progress-bar {
+  background: white !important;
+  height: 2px;
+}
+
+.custom-audio-player .rhap_progress-filled {
+  background-color: white !important;
+}
+
+.custom-audio-player .rhap_progress-indicator {
+  background-color: white !important;
+  height: 12px;
+  width: 12px;
+  transform: translateY(3px);
+}
+
+.custom-audio-player .rhap_time {
+  color: #a8a8a8 !important;
+  font-size: 14px;
+  top: 30px;
+}
+
+.custom-audio-player .rhap_current-time {
+  position: absolute;
+  transform: translate(8px, 180px);
+
+  @media screen and (max-width: 850px) {
+    transform: translate(8px, 400px);
+  }
+}
+
+.custom-audio-player .rhap_total-time {
+  position: absolute;
+  transform: translate(320px, 180px);
+
+  @media screen and (max-width: 850px) {
+    transform: translate(320px, 400px);
+  }
+
+  @media screen and (max-width: 525px) {
+    transform: translate(242px, 400px);
+  }
+}
+
+.custom-audio-player .rhap_controls-section {
+  position: relative;
+  flex-direction: column-reverse;
+}
+
+.custom-audio-player .rhap_controls-section > div {
+  margin-top: 5px;
+}
+
+.custom-audio-player .rhap_main-controls {
+  display: none;
+}

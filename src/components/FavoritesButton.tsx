@@ -12,8 +12,6 @@ export const FavoritesButton = ({
   isFavorited,
   ...props
 }: FavoritesButtonProps) => {
-  const favoriteIconSource = getFavoriteIconSource(isFavorited)
-
   return (
     <button
       {...props}
@@ -29,7 +27,7 @@ export const FavoritesButton = ({
         width={20}
         height={20}
         alt={'Favorite icon'}
-        src={favoriteIconSource}
+        src={getFavoriteIconSource(isFavorited)}
       />
       Favorites
     </button>

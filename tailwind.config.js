@@ -5,7 +5,8 @@ module.exports = {
       black: '#000',
       white: '#fff',
       gray: '#D1D1D1',
-      slate: '#545454',
+      'slate-50': '#A8A8A8',
+      'slate-100': '#545454',
       'gray-50': '#808080',
       'gray-100': '#666666',
       'gray-150': '#404040',
@@ -15,6 +16,7 @@ module.exports = {
       'gray-350': '#1d1d1d',
       'alice-blue': '#00DAE8',
       transparent: 'rgba(0, 0, 0, 0)',
+      'fade-white': 'rgba(255, 255, 255, 0.7)',
     },
     screens: {
       tablet: '850px',

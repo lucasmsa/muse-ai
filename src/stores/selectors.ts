@@ -5,8 +5,9 @@ export const useHomeSelector = ({
   search,
   isError,
   isLoading,
+  setSearch,
   loadSongs,
-  favoriteSong,
+  setFavoriteSong,
   favoritedSongsIds,
   showOnlyFavorites,
   showAlphabeticallyOrdered,
@@ -16,7 +17,8 @@ export const useHomeSelector = ({
   isError,
   loadSongs,
   isLoading,
-  favoriteSong,
+  setSearch,
+  setFavoriteSong,
   favoritedSongsIds,
   showOnlyFavorites,
   showAlphabeticallyOrdered,
@@ -46,4 +48,28 @@ export const useComboboxSelector = ({
   showOnlyFavorites,
 }: InitialState) => {
   return { songs, search, setSearch, favoritedSongsIds, showOnlyFavorites }
+}
+
+export const useSongSelector = ({
+  song,
+  songs,
+  isError,
+  loadSong,
+  loadSongs,
+  isLoading,
+  getRelatedSongs,
+  setFavoriteSong,
+  favoritedSongsIds,
+}: InitialState) => {
+  return {
+    song,
+    songs,
+    isError,
+    loadSong,
+    loadSongs,
+    isLoading,
+    getRelatedSongs,
+    setFavoriteSong,
+    favoritedSongsIds,
+  }
 }

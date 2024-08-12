@@ -3,7 +3,6 @@
 import { Card } from '@/components/Card'
 import { useSongsStore } from '@/stores'
 import { Fragment, useEffect } from 'react'
-import { Navbar } from '@/components/Navbar'
 import { AnimatePresence } from 'framer-motion'
 import { useHomeSelector } from '@/stores/selectors'
 import { SongsToolbar } from '@/components/SongsToolbar'
@@ -11,6 +10,7 @@ import { useFilteredSongs } from '@/hooks/useFilteredSongs'
 import { LoadingSpinner } from '@/components/LoadingSpinner'
 import { prependAssetsImagePath } from '@/utils/prependAssetsImagePath'
 import { FadeAnimationWrapper } from '@/components/FadeAnimationWrapper'
+import { ContentWrapper } from '@/components/ContentWrapper'
 
 export default function HomePage() {
   const {
@@ -19,7 +19,8 @@ export default function HomePage() {
     isError,
     isLoading,
     loadSongs,
-    favoriteSong,
+    setSearch,
+    setFavoriteSong,
     favoritedSongsIds,
     showOnlyFavorites,
     showAlphabeticallyOrdered,
@@ -35,6 +36,8 @@ export default function HomePage() {
 
   useEffect(() => {
     loadSongs()
+
+    if (search.length) setSearch('')
   }, [])
 
   const renderContent = () => {
@@ -66,9 +69,9 @@ export default function HomePage() {
                   title={song.title}
                   artist={song.artist}
                   albumTitle={song.album.title}
-                  coverArt={prependAssetsImagePath(song.files.coverArt)}
+                  coverArtPath={prependAssetsImagePath(song.files.coverArt)}
                   favorite={{
-                    onClick: () => favoriteSong(id),
+                    onClick: () => setFavoriteSong(id),
                     isFavorited: favoritedSongsIds.has(id),
                   }}
                 />
@@ -81,8 +84,8 @@ export default function HomePage() {
   }
 
   return (
-    <section className="pb-16 max-w-[1240px] flex-grow w-full h-full flex flex-col pt-12 mx-auto px-6">
+    <ContentWrapper>
       <FadeAnimationWrapper>{renderContent()}</FadeAnimationWrapper>
-    </section>
+    </ContentWrapper>
   )
 }

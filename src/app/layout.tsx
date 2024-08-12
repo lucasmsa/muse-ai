@@ -1,8 +1,7 @@
-import { Navbar } from '@/components/Navbar'
 import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Nokora } from 'next/font/google'
-// import { CounterStoreProvider } from '@/providers/counter-store-provider'
+import { Navbar } from '@/components/Navbar'
 
 export const metadata: Metadata = {
   title: 'MUSIC.ai coding test',

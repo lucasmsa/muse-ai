@@ -1,9 +1,9 @@
 'use client'
 
-import { linearGradientStylization } from '@/styles/utils/linearGradientStylization'
+import Link from 'next/link'
 import Combobox from './Combobox'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import { linearGradientStylization } from '@/styles/utils/linearGradientStylization'
 
 export const Navbar = () => {
   const pathname = usePathname()
@@ -11,11 +11,14 @@ export const Navbar = () => {
   const isSongPage = pathname.startsWith('/song/')
 
   const renderCombobox = () => {
-    if (isSongPage) return <Combobox size="lg" />
+    if (isSongPage) return <Combobox size="lg" linksToSongPage />
   }
 
   return (
-    <header className="w-full h-20 bg-gray-350 pb-7 pt-7 flex items-center mx-auto">
+    <header
+      aria-label="Navbar component"
+      className="w-full h-20 bg-gray-350 pb-7 pt-7 flex items-center mx-auto z-50"
+    >
       <section
         className="max-w-[1240px] w-full mx-auto px-6 flex flex-row items-center gap-14
                           max-mobile:gap-5"

@@ -6,22 +6,40 @@ import { AnimatePresence } from 'framer-motion'
 import { useComboboxSelector } from '@/stores/selectors'
 import { useFilteredSongs } from '@/hooks/useFilteredSongs'
 import { FadeAnimationWrapper } from './FadeAnimationWrapper'
+import Link from 'next/link'
 
 interface ComboboxProps {
   size: 'md' | 'lg'
-  onClick?: () => void
+  linksToSongPage?: boolean
 }
 
-export default function Combobox({ size, onClick }: ComboboxProps) {
+interface ComboboxItemProps {
+  id: number
+  title: string
+  index: number
+}
+
+export default function Combobox({ size, linksToSongPage }: ComboboxProps) {
   const { songs, search, setSearch, favoritedSongsIds, showOnlyFavorites } =
     useSongsStore(useComboboxSelector)
-  const onClickProperty = onClick ? { onClick } : {}
   const { filteredSongs, debouncedSearch } = useFilteredSongs({
     songs,
     search,
     favoritedSongsIds,
     showOnlyFavorites,
   })
+
+  const renderComboboxItem = ({ id, title, index }: ComboboxItemProps) => {
+    return (
+      <Ariakit.ComboboxItem
+        key={id}
+        value={title}
+        className={`flex cursor-default scroll-m-2 py-3 align-center gap-2 w-[90%] mx-auto data-[size=lg]:w-[364px] hover:bg-[hsl(204 100% 80% / 0.4)]
+          data-[active-item]:bg-[hsl(204 100% 40%)] data-[onematch=true]:border-none border-b-2 border-slate-100 data-[active-item]:text-white
+          ${index === filteredSongs.length - 1 ? 'border-none' : ''} ${linksToSongPage ? 'cursor-pointer' : ''} hover:text-white transition-all duration-200`}
+      />
+    )
+  }
 
   return (
     <div className="relative">
@@ -57,16 +75,15 @@ export default function Combobox({ size, onClick }: ComboboxProps) {
           >
             <AnimatePresence>
               <FadeAnimationWrapper>
-                {filteredSongs?.map(({ id, song: { title } }, index) => (
-                  <Ariakit.ComboboxItem
-                    key={id}
-                    value={title}
-                    {...onClickProperty}
-                    className={`flex cursor-default scroll-m-2 py-3 align-center gap-2 w-52 mx-auto data-[size=lg]:w-[364px] hover:bg-[hsl(204 100% 80% / 0.4)]
-                          data-[active-item]:bg-[hsl(204 100% 40%)] data-[onematch=true]:border-none border-b-2 border-slate data-[active-item]:text-white
-                          ${index === filteredSongs.length - 1 ? 'border-none' : ''}`}
-                  />
-                ))}
+                {filteredSongs?.map(({ id, song: { title } }, index) =>
+                  linksToSongPage ? (
+                    <Link href={`${id}`}>
+                      {renderComboboxItem({ id, title, index })}
+                    </Link>
+                  ) : (
+                    renderComboboxItem({ id, title, index })
+                  ),
+                )}
               </FadeAnimationWrapper>
             </AnimatePresence>
           </Ariakit.ComboboxPopover>
