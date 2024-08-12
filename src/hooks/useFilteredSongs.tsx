@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
+import { SongCollection } from '@/types'
 import { matchSorter } from 'match-sorter'
 import { useDebounce } from './useDebounce'
-import { SongCollection } from '@/types'
 
 interface FilterSongsProps {
   search: string
@@ -43,7 +43,13 @@ export const useFilteredSongs = ({
     }
 
     return filtered
-  }, [songs, showOnlyFavorites, showAlphabeticallyOrdered, debouncedSearch])
+  }, [
+    songs,
+    debouncedSearch,
+    favoritedSongsIds,
+    showOnlyFavorites,
+    showAlphabeticallyOrdered,
+  ])
 
   return { filteredSongs, debouncedSearch }
 }
