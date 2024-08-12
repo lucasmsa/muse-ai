@@ -39,7 +39,7 @@ export const SongPlayerCard = ({
 
   return (
     <div
-      className="flex flex-row max-tablet:flex-col gap-8 text-white w-[720px] max-tablet:w-[400px] max-tablet:justify-center max-tablet:items-center
+      className="flex flex-row max-tablet:flex-col gap-8 text-white max-tablet:w-[400px] max-tablet:justify-center max-tablet:items-center
                     max-tablet:mx-auto max-mobile:w-[240px]"
     >
       <Image
@@ -50,7 +50,7 @@ export const SongPlayerCard = ({
         className="rounded outline-2 outline"
       />
       <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-row gap-9 max-tablet:h-32 items-center">
+        <div className="flex flex-row gap-9 max-tablet:h-32 h-34 items-center">
           <Image
             width={64}
             height={64}
@@ -61,7 +61,7 @@ export const SongPlayerCard = ({
               isPlaying ? '/assets/icons/pause.svg' : '/assets/icons/play.svg'
             }
           />
-          <div className="flex flex-col gap-3 w-[414px] max-tablet:w-[200px]">
+          <div className="flex flex-col gap-3 w-[540px] max-tablet:w-[200px]">
             <div className="flex flex-row gap-5">
               <h1 className="text-[32px] leading-8">{title}</h1>
               <Image

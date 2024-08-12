@@ -86,7 +86,7 @@ button {
 
 .custom-audio-player .rhap_current-time {
   position: absolute;
-  transform: translate(8px, 188px);
+  transform: translate(8px, 176px);
 
   @media screen and (max-width: 850px) {
     transform: translate(8px, 455px);
@@ -95,7 +95,7 @@ button {
 
 .custom-audio-player .rhap_total-time {
   position: absolute;
-  transform: translate(320px, 188px);
+  transform: translate(320px, 176px);
 
   @media screen and (max-width: 850px) {
     transform: translate(320px, 455px);
