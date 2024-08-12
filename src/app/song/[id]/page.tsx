@@ -83,7 +83,7 @@ export default function SongPage({ params: { id } }: SongPageProps) {
             }}
             coverArtPath={prependAssetsImagePath(song.files.coverArt)}
           />
-          {relatedSongs?.length && (
+          {relatedSongs?.length ? (
             <div className="mt-24 flex flex-col max-tablet:mx-auto max-tablet:items-center">
               <p className="text-fade-white text-base">Other albums</p>
               <div className="flex flex-row w-full gap-8 flex-wrap mt-5 max-tablet:items-center max-tablet:justify-center">
@@ -101,7 +101,7 @@ export default function SongPage({ params: { id } }: SongPageProps) {
                 ))}
               </div>
             </div>
-          )}
+          ) : null}
         </FadeAnimationWrapper>
       </ContentWrapper>
     </>

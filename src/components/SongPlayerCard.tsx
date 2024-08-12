@@ -50,7 +50,7 @@ export const SongPlayerCard = ({
         className="rounded outline-2 outline"
       />
       <div className="flex flex-col items-center justify-center">
-        <div className="flex flex-row gap-9 items-center">
+        <div className="flex flex-row gap-9 max-tablet:h-32 items-center">
           <Image
             width={64}
             height={64}

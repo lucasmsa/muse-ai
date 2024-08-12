@@ -55,6 +55,7 @@ button {
 
 .rhap_container {
   width: 400px !important;
+  box-shadow: none !important;
 
   @media screen and (max-width: 525px) {
     width: 320px !important;
@@ -85,23 +86,23 @@ button {
 
 .custom-audio-player .rhap_current-time {
   position: absolute;
-  transform: translate(8px, 180px);
+  transform: translate(8px, 188px);
 
   @media screen and (max-width: 850px) {
-    transform: translate(8px, 400px);
+    transform: translate(8px, 455px);
   }
 }
 
 .custom-audio-player .rhap_total-time {
   position: absolute;
-  transform: translate(320px, 180px);
+  transform: translate(320px, 188px);
 
   @media screen and (max-width: 850px) {
-    transform: translate(320px, 400px);
+    transform: translate(320px, 455px);
   }
 
   @media screen and (max-width: 525px) {
-    transform: translate(242px, 400px);
+    transform: translate(240px, 455px);
   }
 }
 
