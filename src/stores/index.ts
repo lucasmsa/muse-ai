@@ -79,6 +79,8 @@ export const useSongsStore = create<
             const response = await fetch(`/api/song/${id}`)
             const data = await response.json()
 
+            if (!data.song) throw new Error('Song not found')
+
             set({
               song: {
                 ...data.song,
