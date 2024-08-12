@@ -1,31 +1,36 @@
-# Front-end platform test
+# 🎶 Muse.ai Application
 
-### Common commands
+- Next.js app to favorite songs, sort, search and play them!
 
-- `node server.js` - start the node server providing the data
-- `npm run dev` - run the development env with nextjs
+### Main technologies used
 
-### Typography
+- Docker
+- Zustand
+- Radix-ui
+- TailwindCSS
+- Framer-motion
+- react-h5-audio-player
+- Typescript, ESLint, Prettier
 
-Follow this global css to include font custom using in figma file:
+## Functionalities
 
-```
-@font-face {
-  font-family: 'Articulat';
-  src: url('/assets/fonts/ArticulatCF-Medium.otf');
-  font-weight: 600;
-}
+- [x] User is able to favorite songs
+- [x] User can play the song on the internal page
+- [x] Favorited songs are persisted on local storage
+- [x] Search field should display suggestions while typing
+- [x] User can sort songs alphabetically on the main screen
+- [x] User can filter and display only favorite songs on the main page
 
-@font-face {
-  font-family: 'Articulat';
-  src: url('/assets/fonts/ArticulatCF-Normal.otf');
-  font-weight: 500;
-}
+## How to run it
 
-body {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 100%;
-  font-family: 'Articulat', helvetica, arial, sans-serif;
-}
-```
+- Clone the repository `git clone https://github.com/lucasmsa/muse-ai.git`
+- Change to the repository folder `cd muse-ai`
+
+### Native
+
+- Install the dependencies `yarn`
+- You can then run `dev:client:server` or open up 2 terminals and execute `yarn dev` and `node server.js`
+
+### Docker
+
+- Run `docker-compose up --build`
