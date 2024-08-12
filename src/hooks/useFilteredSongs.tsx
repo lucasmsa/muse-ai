@@ -5,6 +5,7 @@ import { useDebounce } from './useDebounce'
 
 interface FilterSongsProps {
   search: string
+  ignoreFilters?: boolean
   songs: SongCollection[]
   showOnlyFavorites: boolean
   favoritedSongsIds: Set<number>
@@ -14,6 +15,7 @@ interface FilterSongsProps {
 export const useFilteredSongs = ({
   songs,
   search,
+  ignoreFilters,
   favoritedSongsIds,
   showOnlyFavorites,
   showAlphabeticallyOrdered,
@@ -26,7 +28,7 @@ export const useFilteredSongs = ({
   const filteredSongs = useMemo(() => {
     let filtered = songs
 
-    if (showOnlyFavorites) {
+    if (!ignoreFilters && showOnlyFavorites) {
       filtered = filtered.filter(({ id }) => favoritedSongsIds.has(id))
     }
 

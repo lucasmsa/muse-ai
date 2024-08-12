@@ -10,6 +10,7 @@ import Link from 'next/link'
 
 interface ComboboxProps {
   size: 'md' | 'lg'
+  ignoreFilters?: boolean
   linksToSongPage?: boolean
 }
 
@@ -19,12 +20,17 @@ interface ComboboxItemProps {
   index: number
 }
 
-export default function Combobox({ size, linksToSongPage }: ComboboxProps) {
+export default function Combobox({
+  size,
+  linksToSongPage,
+  ignoreFilters = false,
+}: ComboboxProps) {
   const { songs, search, setSearch, favoritedSongsIds, showOnlyFavorites } =
     useSongsStore(useComboboxSelector)
   const { filteredSongs, debouncedSearch } = useFilteredSongs({
     songs,
     search,
+    ignoreFilters,
     favoritedSongsIds,
     showOnlyFavorites,
   })

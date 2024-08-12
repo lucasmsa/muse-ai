@@ -11,7 +11,7 @@ export const Navbar = () => {
   const isSongPage = pathname.startsWith('/song/')
 
   const renderCombobox = () => {
-    if (isSongPage) return <Combobox size="lg" linksToSongPage />
+    if (isSongPage) return <Combobox size="lg" linksToSongPage ignoreFilters />
   }
 
   return (

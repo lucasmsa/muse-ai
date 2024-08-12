@@ -1,17 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { radialGradientStylization } from '@/styles/utils/radialGradientStylization'
 import { useEffect } from 'react'
 import { useSongsStore } from '@/stores'
+import { Card } from '@/components/Card'
 import { useSongSelector } from '@/stores/selectors'
-import { prependAssetsImagePath } from '@/utils/prependAssetsImagePath'
 import { LoadingSpinner } from '@/components/LoadingSpinner'
 import { ContentWrapper } from '@/components/ContentWrapper'
 import { SongPlayerCard } from '@/components/SongPlayerCard'
+import { prependAssetsImagePath } from '@/utils/prependAssetsImagePath'
 import { prependAssetsAudioPath } from '@/utils/prependAssetsAudioPath'
 import { FadeAnimationWrapper } from '@/components/FadeAnimationWrapper'
-import { Card } from '@/components/Card'
+import { radialGradientStylization } from '@/styles/utils/radialGradientStylization'
 
 interface SongPageProps {
   params: {
