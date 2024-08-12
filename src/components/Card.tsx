@@ -52,6 +52,7 @@ export const Card = ({
           width={204}
           height={204}
           src={coverArtPath}
+          className="rounded-t-[5px]"
           alt={`${albumTitle} cover art`}
         />
       </Link>
