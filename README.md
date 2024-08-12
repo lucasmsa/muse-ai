@@ -2,7 +2,7 @@
 
 - Next.js app to favorite songs, sort, search and play them!
 
-### Main technologies used
+## Main technologies used
 
 - Docker
 - Zustand
