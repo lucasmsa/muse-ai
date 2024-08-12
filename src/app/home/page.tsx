@@ -42,7 +42,11 @@ export default function HomePage() {
 
   const renderContent = () => {
     if (isLoading) {
-      return <LoadingSpinner />
+      return (
+        <div className="flex items-center justify-center">
+          <LoadingSpinner />
+        </div>
+      )
     }
 
     if (isError) {

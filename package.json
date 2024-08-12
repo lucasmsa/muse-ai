@@ -4,14 +4,12 @@
     "test": "jest",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "dev:client:server": "npx concurrently \"node server.js\" \"npm run dev\""
+    "start": "next start"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.8",
     "@radix-ui/react-switch": "^1.1.0",
     "@types/prop-types": "^15.7.12",
-    "axios": "^1.7.3",
     "cmdk": "^1.0.0",
     "framer-motion": "^11.3.24",
     "match-sorter": "^6.3.4",

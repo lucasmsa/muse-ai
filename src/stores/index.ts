@@ -1,6 +1,4 @@
 import { create } from 'zustand'
-import { AxiosError } from 'axios'
-import { api } from '@/service/api'
 import { Song, SongCollection } from '@/types'
 import { persist, devtools, StorageValue } from 'zustand/middleware'
 
@@ -10,8 +8,8 @@ export interface InitialState {
   search: string
   song: Song | null
   isLoading: boolean
+  isError: null | Error
   songs: SongCollection[]
-  isError: null | AxiosError
   showOnlyFavorites: boolean
   favoritedSongsIds: Set<number>
   loadSongs: () => Promise<void>
@@ -60,18 +58,15 @@ export const useSongsStore = create<
           set({ isLoading: true })
 
           try {
-            const response = await api.get('/songs')
-
-            console.log({
-              songs: response.data,
-            })
+            const response = await fetch('/api/songs')
+            const data = await response.json()
 
             set({
-              songs: response.data.songs,
+              songs: data.songs,
             })
           } catch (error) {
             set({
-              isError: error as AxiosError,
+              isError: error as Error,
             })
           } finally {
             set({ isLoading: false })
@@ -81,21 +76,18 @@ export const useSongsStore = create<
           set({ isLoading: true })
 
           try {
-            const response = await api.get(`/song/${id}`)
-
-            if (!response.data.song) {
-              throw new Error('Song not found')
-            }
+            const response = await fetch(`/api/song/${id}`)
+            const data = await response.json()
 
             set({
               song: {
-                ...response.data.song,
+                ...data.song,
                 id: Number(id),
               },
             })
           } catch (error) {
             set({
-              isError: error as AxiosError,
+              isError: error as Error,
             })
           } finally {
             set({ isLoading: false })

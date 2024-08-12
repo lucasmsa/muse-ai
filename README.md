@@ -1,6 +1,6 @@
 # 🎶 Muse.ai Application
 
-- Next.js app to favorite songs, sort, search and play them!
+- Next.js app to sort, search, favorite songs and play them!
 
 ## Main technologies used
 
@@ -29,7 +29,7 @@
 ### Native
 
 - Install the dependencies `yarn`
-- You can then run `dev:client:server` or open up 2 terminals and execute `yarn dev` and `node server.js`
+- You can then run `yarn dev`
 
 ### Docker
 
