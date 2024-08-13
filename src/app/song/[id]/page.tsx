@@ -70,8 +70,8 @@ export default function SongPage({ params: { id } }: SongPageProps) {
         alt="Song album cover image faded in the background"
         className="absolute right-0 mix-blend-overlay ml-auto max-tablet:max-w-0 max-tablet:max-h-0"
       />
-      <div className="z-10">
-        <ContentWrapper>
+      <ContentWrapper>
+        <div className="z-10">
           <FadeAnimationWrapper>
             <SongPlayerCard
               title={song.title}
@@ -104,8 +104,8 @@ export default function SongPage({ params: { id } }: SongPageProps) {
               </div>
             ) : null}
           </FadeAnimationWrapper>
-        </ContentWrapper>
-      </div>
+        </div>
+      </ContentWrapper>
     </>
   )
 }
